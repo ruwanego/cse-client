@@ -1,6 +1,6 @@
 # Colombo Stock Exchange (CSE) API 📈🏢
 
-> **Unofficial API usage guide & Python example 🐍**  
+> **Unofficial API docs and typed TypeScript client**  
 > Explore stock market data from the Colombo Stock Exchange (CSE) via their public API endpoints — reverse-engineered since no official documentation exists. 🔍
 
 ---
@@ -10,7 +10,83 @@
 ## Overview 📋
 
 The Colombo Stock Exchange provides real-time and historical stock data via several public endpoints used by their web portal.  
-This repository documents some of the known API endpoints, example responses, and Python code to fetch and parse data.
+This repository documents known raw endpoints and provides a cleaner Node.js TypeScript client that hides the awkward upstream API shape.
+
+## Attribution
+
+The original raw endpoint discovery and documentation came from [`GH0STH4CKER/Colombo-Stock-Exchange-CSE-API-Documentation`](https://github.com/GH0STH4CKER/Colombo-Stock-Exchange-CSE-API-Documentation). Credit to that project for mapping the first usable set of CSE web endpoints.
+
+This repository is not maintained as a GitHub fork because its purpose has diverged: it now provides a TypeSpec-described, typed TypeScript client with a normalized API surface instead of only mirroring the upstream documentation.
+
+---
+
+## TypeScript Client
+
+The wrapper exposes sane method names and typed responses while translating internally to the current CSE endpoints.
+
+```bash
+npm install github:ruwanego/cse-api
+```
+
+```ts
+import { CseClient } from "cse-api";
+
+const cse = new CseClient();
+
+const status = await cse.getMarketStatus();
+const company = await cse.getCompany("LOLC.N0000");
+const chart = await cse.getCompanyChart("LOLC.N0000", 1);
+
+console.log(status.status);
+console.log(company.securityId);
+console.log(chart.points[0]);
+```
+
+### Clean API Surface
+
+```ts
+await cse.getCompany("LOLC.N0000");
+await cse.getCompanyChart("LOLC.N0000", 1); // periods: 1, 7, 30, 90, 365
+await cse.getTradeSummary();
+await cse.getTodayPrices();
+await cse.getTopGainers();
+await cse.getTopLosers();
+await cse.getMostActiveTrades();
+await cse.getMarketStatus();
+await cse.getMarketSummary();
+await cse.getAspi();
+await cse.getSnpSriLanka20();
+await cse.getSectors();
+await cse.getDetailedTrades();
+await cse.getDailyMarketSummary();
+```
+
+Announcement helpers are also included:
+
+```ts
+await cse.getNewListingsAnnouncements();
+await cse.getBuyInBoardAnnouncements();
+await cse.getApprovedAnnouncements();
+await cse.getCovidAnnouncements();
+await cse.getFinancialAnnouncements();
+await cse.getCircularAnnouncements();
+await cse.getDirectiveAnnouncements();
+await cse.getNonComplianceAnnouncements();
+```
+
+For debugging undocumented behavior, use the raw escape hatch:
+
+```ts
+await cse.raw("companyInfoSummery", { symbol: "LOLC.N0000" });
+```
+
+### TypeSpec
+
+The clean public API is described in `tsp/main.tsp`. It intentionally models the wrapper API, not the messy upstream CSE wire contract.
+
+```bash
+npm run typespec:compile
+```
 
 ---
 

@@ -1,0 +1,46 @@
+{
+  "name": "cse-api",
+  "version": "0.1.0",
+  "description": "Typed Node.js client for the unofficial Colombo Stock Exchange API.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "tsp",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run",
+    "typespec:compile": "tsp compile tsp",
+    "check": "npm run typecheck && npm test && npm run typespec:compile",
+    "prepare": "npm run build",
+    "prepack": "npm run build"
+  },
+  "keywords": [
+    "cse",
+    "colombo-stock-exchange",
+    "stock-market",
+    "typescript"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@typespec/compiler": "^1.13.0",
+    "@typespec/http": "^1.13.0",
+    "@typespec/openapi3": "^1.13.0",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.9"
+  }
+}
