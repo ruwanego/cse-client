@@ -205,6 +205,8 @@ npm run typespec:compile
 
 The generated OpenAPI output is a description of this package's clean API surface. It is not a direct description of the raw CSE backend.
 
+TypeSpec is not required to use the client library. It is a development tool for maintaining the contract and generated OpenAPI description. For day-to-day client changes, the TypeScript source and tests are the primary workflow; run TypeSpec when you change the public API surface or want to validate the contract.
+
 ## Development
 
 ```bash
