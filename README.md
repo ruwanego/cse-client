@@ -1,15 +1,15 @@
-# cse-api
+# cse-client
 
 Typed Node.js client and TypeSpec contract for the unofficial Colombo Stock Exchange web API.
 
-`cse-api` gives application code a small, predictable API instead of exposing the raw CSE web endpoints directly. The wrapper keeps upstream quirks internal: read-only `POST` requests, misspelled endpoint names, inconsistent JSON shapes, and the `symbol -> securityId` lookup required for company chart data.
+`cse-client` gives application code a small, predictable API instead of exposing the raw CSE web endpoints directly. The wrapper keeps upstream quirks internal: read-only `POST` requests, misspelled endpoint names, inconsistent JSON shapes, and the `symbol -> securityId` lookup required for company chart data.
 
 This package is unofficial and is not affiliated with the Colombo Stock Exchange.
 
 ## Install
 
 ```bash
-npm install github:ruwanego/cse-api
+npm install github:ruwanego/cse-client
 ```
 
 Requirements:
@@ -20,7 +20,7 @@ Requirements:
 ## Quick Start
 
 ```ts
-import { CseClient } from "cse-api";
+import { CseClient } from "cse-client";
 
 const cse = new CseClient();
 
@@ -181,7 +181,7 @@ The client raises typed errors:
 - `CseValidationError`: invalid client-side input, such as an unsupported chart period
 
 ```ts
-import { CseApiError, CseClient } from "cse-api";
+import { CseApiError, CseClient } from "cse-client";
 
 const cse = new CseClient({ timeoutMs: 60_000 });
 

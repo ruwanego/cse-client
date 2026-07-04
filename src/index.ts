@@ -224,7 +224,7 @@ export class CseValidationError extends Error {
 
 const DEFAULT_BASE_URL = "https://www.cse.lk/api";
 const DEFAULT_TIMEOUT_MS = 20_000;
-const DEFAULT_USER_AGENT = "cse-api-js/0.1.0";
+const DEFAULT_USER_AGENT = "cse-client-js/0.1.0";
 const CHART_PERIODS = new Set<number>([1, 7, 30, 90, 365]);
 const MARKET_CHART_IDS: Record<MarketChartIndex, number> = {
   ASPI: 1,

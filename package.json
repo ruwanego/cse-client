@@ -1,5 +1,5 @@
 {
-  "name": "cse-api",
+  "name": "cse-client",
   "version": "0.1.0",
   "description": "Typed Node.js client and TypeSpec contract for the unofficial Colombo Stock Exchange web API.",
   "type": "module",
@@ -37,12 +37,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ruwanego/cse-api.git"
+    "url": "git+https://github.com/ruwanego/cse-client.git"
   },
   "bugs": {
-    "url": "https://github.com/ruwanego/cse-api/issues"
+    "url": "https://github.com/ruwanego/cse-client/issues"
   },
-  "homepage": "https://github.com/ruwanego/cse-api#readme",
+  "homepage": "https://github.com/ruwanego/cse-client#readme",
   "license": "MIT",
   "sideEffects": false,
   "engines": {

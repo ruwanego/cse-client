@@ -4,7 +4,7 @@ import "@typespec/openapi3";
 using TypeSpec.Http;
 
 @service(#{
-  title: "CSE API Client",
+  title: "CSE Client",
 })
 @server("https://www.cse.lk/api", "CSE upstream API")
 namespace CseApi;
